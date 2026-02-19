@@ -1,0 +1,47 @@
+{
+  "expo": {
+    "name": "MediTrack",
+    "slug": "meditrack",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "plugins": [
+      ["expo-notifications", {
+        "icon": "./assets/notification-icon.png",
+        "color": "#4CAF50",
+        "sounds": ["./assets/pill-reminder.wav"],
+        "androidMode": "default",
+        "iosDisplayInForeground": true
+      }],
+      "expo-task-manager"
+    ],
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "RECEIVE_BOOT_COMPLETED",
+        "USE_EXACT_ALARM",
+        "SCHEDULE_EXACT_ALARM",
+        "POST_NOTIFICATIONS"
+      ],
+      "package": "com.meditrack.app"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.meditrack.app",
+      "infoPlist": {
+        "UIBackgroundModes": ["fetch", "remote-notification"],
+        "NSUserNotificationUsageDescription": "MediTrack needs notifications to remind you to take your pills on time."
+      }
+    }
+  }
+}
