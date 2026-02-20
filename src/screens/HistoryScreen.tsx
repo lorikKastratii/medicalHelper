@@ -83,7 +83,7 @@ export default function HistoryScreen() {
         </TouchableOpacity>
         {pills.map((p) => (
           <TouchableOpacity
-            key={p.id}
+            key={`filter-${p.id}`}
             style={[styles.filterChip, { backgroundColor: filterPillId === p.id ? p.color : colors.card }]}
             onPress={() => setFilterPillId(filterPillId === p.id ? null : p.id)}
           >
@@ -95,17 +95,17 @@ export default function HistoryScreen() {
       {/* Calendar */}
       <View style={styles.calendarHeader}>
         {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d, i) => (
-          <Text key={i} style={[styles.calDayHeader, { color: colors.textSecondary }]}>{d}</Text>
+          <Text key={`weekday-${i}`} style={[styles.calDayHeader, { color: colors.textSecondary }]}>{d}</Text>
         ))}
       </View>
       <View style={styles.calendarGrid}>
-        {calendarDates.map((date, i) => {
+        {calendarDates.map((date) => {
           const status = getDateStatus(date);
           const isSelected = isSameDay(date, selectedDate);
           const isToday = isSameDay(date, new Date());
           return (
             <TouchableOpacity
-              key={i}
+              key={format(date, 'yyyy-MM-dd')}
               style={[
                 styles.calDay,
                 isSelected && { backgroundColor: colors.primary + '20', borderRadius: 8 },

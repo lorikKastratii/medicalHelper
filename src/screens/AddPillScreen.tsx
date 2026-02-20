@@ -166,7 +166,7 @@ export default function AddPillScreen({ navigation, route }: Props) {
             <View style={styles.daysRow}>
               {DAY_NAMES.map((d, i) => (
                 <TouchableOpacity
-                  key={i}
+                  key={`day-${i}`}
                   style={[styles.dayBtn, { backgroundColor: days.includes(i) ? colors.primary : colors.card, borderColor: colors.border }]}
                   onPress={() => toggleDay(i)}
                 >
@@ -182,7 +182,7 @@ export default function AddPillScreen({ navigation, route }: Props) {
         {/* Times */}
         <Text style={[styles.label, { color: colors.textSecondary }]}>Times</Text>
         {times.map((t, i) => (
-          <View key={i} style={[styles.timeRow, { backgroundColor: colors.card, borderColor: colors.border }]}>
+          <View key={`time-${i}-${t}`} style={[styles.timeRow, { backgroundColor: colors.card, borderColor: colors.border }]}>
             <TouchableOpacity onPress={() => { setEditingTimeIndex(i); setShowTimePicker(true); }} style={{ flex: 1 }}>
               <Text style={[styles.timeText, { color: colors.text }]}>{formatTime(t)}</Text>
             </TouchableOpacity>
